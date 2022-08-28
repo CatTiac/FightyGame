@@ -1,4 +1,3 @@
-//Vid 2:41:42
 
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
@@ -61,7 +60,21 @@ const player = new Fighter({
       imageSrc: "./images/Hero/Sprites/Jump.png",
       frameMax: 2,
     },
+    fall: {
+      imageSrc: "./images/Hero/Sprites/Fall.png",
+      frameMax: 2,
+    },
+    attack1: {
+      imageSrc: "./images/Hero/Sprites/Attack1.png",
+      frameMax: 6,
+    }
   },
+  attackBox: {
+    offset: {
+      x: 0,
+      y: 0,
+    },
+  }
 });
 
 const enemy = new Fighter({
@@ -79,11 +92,33 @@ const enemy = new Fighter({
   },
   color: "blue",
   imageSrc: "./images/Hero2/Sprites/Idle.png",
-  frameMax: 8,
+  frameMax: 4,
   scale: 2.5,
   offset: {
     x: 150,
-    y: 155,
+    y: 170,
+  },
+  sprites: {
+    idle: {
+      imageSrc: "./images/Hero2/Sprites/Idle.png",
+      frameMax: 4,
+    },
+    run: {
+      imageSrc: "./images/Hero2/Sprites/Run.png",
+      frameMax: 8,
+    },
+    jump: {
+      imageSrc: "./images/Hero2/Sprites/Jump.png",
+      frameMax: 2,
+    },
+    fall: {
+      imageSrc: "./images/Hero2/Sprites/Fall.png",
+      frameMax: 2,
+    },
+    attack1: {
+      imageSrc: "./images/Hero2/Sprites/Attack1.png",
+      frameMax: 4,
+    }
   },
 });
 
@@ -113,30 +148,43 @@ function animate() {
   background.update();
   shop.update();
   player.update();
-  // enemy.update();
+  enemy.update();
 
   player.velocity.x = 0;
   enemy.velocity.x = 0;
 
   //Moves - player
-  player.switchSprite("idle");
   if (keys.a.pressed && player.lastKey === "a") {
     player.velocity.x = -5;
     player.switchSprite("run");
   } else if (keys.d.pressed && player.lastKey === "d") {
     player.velocity.x = 5;
     player.switchSprite("run");
+  } else {
+    player.switchSprite("idle");
   }
 
   if (player.velocity.y < 0) {
     player.switchSprite("jump");
+  } else if (player.velocity.y > 0) {
+    player.switchSprite("fall");
   }
 
   //Moves - Enemy
   if (keys.ArrowLeft.pressed && enemy.lastKey === "ArrowLeft") {
     enemy.velocity.x = -5;
+    enemy.switchSprite("run");
   } else if (keys.ArrowRight.pressed && enemy.lastKey === "ArrowRight") {
     enemy.velocity.x = 5;
+    enemy.switchSprite("run");
+  } else {
+    enemy.switchSprite("idle");
+  }
+
+  if (enemy.velocity.y < 0) {
+    enemy.switchSprite("jump");
+  } else if (enemy.velocity.y > 0) {
+    enemy.switchSprite("fall");
   }
 
   //collisions
@@ -202,7 +250,7 @@ window.addEventListener("keydown", (e) => {
       enemy.velocity.y = -20;
       break;
     case "ArrowDown":
-      enemy.isAttacking = true;
+      enemy.attack();
       break;
   }
 });
