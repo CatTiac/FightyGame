@@ -1,5 +1,3 @@
-//3:35:20
-
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 
@@ -15,13 +13,13 @@ const background = new Sprite({
     x: 0,
     y: 0,
   },
-  imageSrc: "./images/mountainsDetail.png",
+  imageSrc: "./images/TallFloorForest.png",
 });
 
 const shop = new Sprite({
   position: {
     x: 600,
-    y: 225,
+    y: 194,
   },
   imageSrc: "./images/shop_anim.png",
   scale: 2.5,
@@ -174,6 +172,8 @@ function animate() {
   c.fillRect(0, 0, canvas.width, canvas.height);
   background.update();
   shop.update();
+  c.fillStyle = 'rgba(255, 255, 255, 0.15)'
+  c.fillRect(0, 0, canvas.width, canvas.height)
   player.update();
   enemy.update();
 
