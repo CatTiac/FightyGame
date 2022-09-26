@@ -100,7 +100,7 @@ const enemy = new Fighter({
     y: 170,
   },
   color: "blue",
-  imageSrc: "./images/Hero2/Sprites/Idle.png",
+  imageSrc: "./images/Hero2/Sprites/H2NewIdle.png",
   frameMax: 4,
   scale: 2.5,
   offset: {
@@ -109,31 +109,31 @@ const enemy = new Fighter({
   },
   sprites: {
     idle: {
-      imageSrc: "./images/Hero2/Sprites/Idle.png",
+      imageSrc: "./images/Hero2/Sprites/H2NewIdle.png",
       frameMax: 4,
     },
     run: {
-      imageSrc: "./images/Hero2/Sprites/Run.png",
+      imageSrc: "./images/Hero2/Sprites/H2NewRun.png",
       frameMax: 8,
     },
     jump: {
-      imageSrc: "./images/Hero2/Sprites/Jump.png",
+      imageSrc: "./images/Hero2/Sprites/H2NewJump.png",
       frameMax: 2,
     },
     fall: {
-      imageSrc: "./images/Hero2/Sprites/Fall.png",
+      imageSrc: "./images/Hero2/Sprites/H2NewFall.png",
       frameMax: 2,
     },
     attack1: {
-      imageSrc: "./images/Hero2/Sprites/Attack1.png",
+      imageSrc: "./images/Hero2/Sprites/H2NewAttack1.png",
       frameMax: 4,
     },
     takeHit: {
-      imageSrc: "./images/Hero2/Sprites/Take hit.png",
+      imageSrc: "./images/Hero2/Sprites/H2NewTake hit.png",
       frameMax: 3,
     },
     death: {
-      imageSrc: "./images/Hero2/Sprites/Death.png",
+      imageSrc: "./images/Hero2/Sprites/H2NewDeath.png",
       frameMax: 7,
     },
   },
